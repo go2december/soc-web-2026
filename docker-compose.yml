@@ -18,9 +18,9 @@ services:
       dockerfile: academic_service/Dockerfile
     container_name: soc-academic-service
     ports:
-      - "8001:8001"
+      - "18001:8001"
     environment:
-      - DATABASE_URL=postgresql://crru_user:crru_password@db:5432/crru_social?currentSchema=schema_academic
+      - DATABASE_URL=postgresql://crru_user:crru_password@db:5432/crru_social?options=-csearch_path=schema_academic
     depends_on:
       - db
 
@@ -30,9 +30,9 @@ services:
       dockerfile: news_service/Dockerfile
     container_name: soc-news-service
     ports:
-      - "8002:8002"
+      - "18002:8002"
     environment:
-      - DATABASE_URL=postgresql://crru_user:crru_password@db:5432/crru_social?currentSchema=schema_news
+      - DATABASE_URL=postgresql://crru_user:crru_password@db:5432/crru_social?options=-csearch_path=schema_news
     depends_on:
       - db
 
@@ -42,9 +42,9 @@ services:
       dockerfile: research_service/Dockerfile
     container_name: soc-research-service
     ports:
-      - "8003:8003"
+      - "18003:8003"
     environment:
-      - DATABASE_URL=postgresql://crru_user:crru_password@db:5432/crru_social?currentSchema=schema_research
+      - DATABASE_URL=postgresql://crru_user:crru_password@db:5432/crru_social?options=-csearch_path=schema_research
     depends_on:
       - db
 
