@@ -54,7 +54,7 @@ export default async function NewsPage() {
             <Newspaper className="w-3.5 h-3.5" />
             ข้อมูลประกาศและข่าวสารประชาสัมพันธ์
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-base-content tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-secondary tracking-tight leading-tight">
             News &amp; PR
           </h1>
           <p className="text-sm sm:text-base text-base-content/70 font-semibold leading-relaxed">

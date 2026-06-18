@@ -33,7 +33,7 @@ export default function Navbar() {
                 <Image src="/logo.png" alt="Faculty Logo" fill className="object-contain" priority />
               </div>
               <div className="flex flex-col">
-                <span className="text-sm font-extrabold text-base-content tracking-tight leading-tight transition-colors group-hover:text-primary">
+                <span className="text-sm font-extrabold text-secondary tracking-tight leading-tight transition-colors group-hover:text-primary">
                   คณะสังคมศาสตร์
                 </span>
                 <span className="text-[9px] text-base-content/60 font-bold tracking-wider uppercase leading-none mt-0.5">

@@ -64,7 +64,7 @@ export default async function AcademicPage() {
             <GraduationCap className="w-3.5 h-3.5" />
             หลักสูตรวิชาการคณะสังคมศาสตร์
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-base-content tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-secondary tracking-tight leading-tight">
             Academic Programs
           </h1>
           <p className="text-sm sm:text-base text-base-content/70 font-semibold leading-relaxed">
@@ -84,7 +84,7 @@ export default async function AcademicPage() {
           <section className="space-y-8">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-6 bg-primary rounded-full"></span>
-              <h2 className="text-2xl font-black text-base-content tracking-tight">ระดับปริญญาตรี (Bachelor's Degree)</h2>
+              <h2 className="text-2xl font-black text-secondary tracking-tight">ระดับปริญญาตรี (Bachelor's Degree)</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -143,7 +143,7 @@ export default async function AcademicPage() {
           <section className="space-y-8 pt-8 border-t border-base-200">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-6 bg-accent rounded-full"></span>
-              <h2 className="text-2xl font-black text-base-content tracking-tight">ระดับปริญญาเอก (Ph.D. Programs)</h2>
+              <h2 className="text-2xl font-black text-secondary tracking-tight">ระดับปริญญาเอก (Ph.D. Programs)</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

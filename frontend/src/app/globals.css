@@ -9,7 +9,7 @@
   default: true;
   --color-primary: #F14627;
   --color-primary-content: #ffffff;
-  --color-secondary: #0f172a;
+  --color-secondary: #1b365d;
   --color-secondary-content: #ffffff;
   --color-base-100: #ffffff;
   --color-base-200: #faf9f6;
@@ -78,9 +78,9 @@
   --primary: oklch(0.588 0.199 27.33);
   --primary-foreground: oklch(1 0 0);
 
-  /* 🔵 Secondary: สีฟ้าอมครามสว่าง */
-  --secondary: oklch(0.97 0.014 254.6);
-  --secondary-foreground: oklch(0.265 0.063 259.85);
+  /* 🔵 Secondary: Navy Blue */
+  --secondary: oklch(0.29 0.11 253.5);
+  --secondary-foreground: oklch(1 0 0);
 
   --muted: oklch(0.97 0.006 264.53);
   --muted-foreground: oklch(0.556 0.022 257.42);

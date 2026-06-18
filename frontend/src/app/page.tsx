@@ -116,12 +116,12 @@ export default function Home() {
       </section>
 
       {/* 🔮 Section 2: Explore Pathways (Course Overview) */}
-      <section className="bg-base-100/50 py-16 lg:py-20 border-y border-base-200">
+      <section className="bg-base-200/50 py-16 lg:py-20 border-y border-base-300/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
             <span className="text-xs text-primary font-extrabold uppercase tracking-wider">Academic Options</span>
-            <h2 className="text-3xl md:text-4xl font-black text-base-content tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-black text-secondary tracking-tight">
               เลือกเส้นทางวิชาชีพของคุณ
             </h2>
             <p className="text-sm sm:text-base text-base-content/65 font-semibold leading-relaxed">
@@ -210,7 +210,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
             <div className="space-y-2">
               <span className="text-xs text-primary font-extrabold uppercase tracking-wider">News & Activities</span>
-              <h2 className="text-3xl font-black text-base-content tracking-tight">ข่าวสารและประชาสัมพันธ์</h2>
+              <h2 className="text-3xl font-black text-secondary tracking-tight">ข่าวสารและประชาสัมพันธ์</h2>
             </div>
             <Link 
               href="/news" 
