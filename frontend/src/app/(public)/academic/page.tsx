@@ -1,40 +1,77 @@
 import Link from "next/link"
 
-export default function AcademicPage() {
-  const programs = [
-    { name: "สาขาวิชาการพัฒนาสังคม", level: "ปริญญาตรี", desc: "ศึกษาการเปลี่ยนแปลงโครงสร้างสังคม การบริการสังคม และการพัฒนาที่ยั่งยืน" },
-    { name: "สาขาวิชาจิตวิทยาสังคม", level: "ปริญญาตรี", desc: "จิตวิทยาเชิงลึกเพื่อการทำงานร่วมกับผู้คนและองค์การในสังคม" },
-    { name: "สาขาวิชาคหกรรมศาสตร์ประยุกต์", level: "ปริญญาตรี", desc: "การนำศาสตร์ด้านอาหาร โภชนาการ และการจัดการเครื่องนุ่งห่มไปประยุกต์ใช้เชิงพาณิชย์" },
-    { name: "สาขาวิชายุทธศาสตร์การพัฒนาภูมิภาค", level: "ปริญญาเอก", desc: "เน้นวิจัยเชิงลึกด้านการพัฒนายุทธศาสตร์ นโยบาย และวิถีความมั่นคงของชุมชนท้องถิ่น" }
-  ]
+export const dynamic = "force-dynamic"
+
+interface Program {
+  id: number;
+  code: string;
+  name: string;
+  degree_level: string;
+  description?: string;
+}
+
+const FALLBACK_PROGRAMS: Program[] = [
+  { id: 1, code: "DEV-01", name: "สาขาวิชาการพัฒนาสังคม", degree_level: "ปริญญาตรี", description: "ศึกษาการเปลี่ยนแปลงโครงสร้างสังคม การบริการสังคม และการพัฒนาที่ยั่งยืน" },
+  { id: 2, code: "PSY-01", name: "สาขาวิชาจิตวิทยาสังคม", degree_level: "ปริญญาตรี", description: "จิตวิทยาเชิงลึกเพื่อการทำงานร่วมกับผู้คนและองค์การในสังคม" },
+  { id: 3, code: "HEC-01", name: "สาขาวิชาคหกรรมศาสตร์ประยุกต์", degree_level: "ปริญญาตรี", description: "การนำศาสตร์ด้านอาหาร โภชนาการ และการจัดการเครื่องนุ่งห่มไปประยุกต์ใช้เชิงพาณิชย์" },
+  { id: 4, code: "DEV-PHD", name: "สาขาวิชายุทธศาสตร์การพัฒนาภูมิภาค", degree_level: "ปริญญาเอก", description: "เน้นวิจัยเชิงลึกด้านการพัฒนายุทธศาสตร์ นโยบาย และวิถีความมั่นคงของชุมชนท้องถิ่น" }
+]
+
+async function getPrograms(): Promise<Program[]> {
+  const url = `${process.env.ACADEMIC_SERVICE_URL || "http://academic_service:8001"}/programs`
+  try {
+    const res = await fetch(url, {
+      next: { revalidate: 60 }
+    })
+    if (!res.ok) throw new Error(`Status ${res.status}`)
+    return await res.json()
+  } catch (err) {
+    console.warn(`[Academic SSR] Failed to fetch. Using fallback data. Error:`, err)
+    return FALLBACK_PROGRAMS
+  }
+}
+
+export default async function AcademicPage() {
+  const programs = await getPrograms()
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white p-8">
-      <div className="max-w-4xl mx-auto space-y-8">
-        {/* Navigation Breadcrumb */}
-        <div className="flex gap-2 text-slate-400 text-sm">
-          <Link href="/" className="hover:text-indigo-400">หน้าหลัก</Link>
-          <span>/</span>
-          <span className="text-white font-medium">หลักสูตรการศึกษา</span>
-        </div>
-
-        {/* Title */}
-        <div className="space-y-2">
-          <h1 className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-white via-indigo-100 to-indigo-300 bg-clip-text text-transparent">
-            Academic Profiles
+    <div className="min-h-screen bg-base-200/40 text-base-content p-8">
+      <div className="max-w-4xl mx-auto flex flex-col gap-8">
+        
+        {/* Hero */}
+        <section className="text-center py-12">
+          <h1 className="text-4xl md:text-5xl font-black text-base-content tracking-tight">
+            Academic Programs
           </h1>
-          <p className="text-slate-400">ข้อมูลหลักสูตรปริญญาตรีและปริญญาเอก คณะสังคมศาสตร์ มรชร.</p>
+          <p className="mt-4 text-base-content/70 font-semibold max-w-xl mx-auto">
+            ข้อมูลหลักสูตรปริญญาตรีและปริญญาเอก คณะสังคมศาสตร์ มรชร.
+          </p>
+        </section>
+
+        {/* Breadcrumb */}
+        <div className="flex gap-2 text-sm font-semibold text-base-content/60">
+          <Link href="/" className="hover:text-primary transition-colors">หน้าแรก</Link>
+          <span>/</span>
+          <span>หลักสูตรการศึกษา</span>
         </div>
 
         {/* Program list */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-          {programs.map((prog, index) => (
-            <div key={index} className="p-6 border border-slate-800 rounded-xl bg-slate-900/40 hover:border-slate-700 transition-colors">
-              <span className="inline-block px-2 py-0.5 text-xs font-semibold rounded bg-indigo-500/20 text-indigo-400 mb-3 border border-indigo-500/30">
-                {prog.level}
-              </span>
-              <h3 className="text-xl font-bold text-slate-200">{prog.name}</h3>
-              <p className="text-slate-400 mt-2 text-sm leading-relaxed">{prog.desc}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+          {programs.map((prog) => (
+            <div 
+              key={prog.id} 
+              className="card bg-base-100 shadow-xs border border-base-300/60 hover:shadow-md hover:border-primary/20 transition-all duration-300"
+            >
+              <div className="card-body p-8 gap-4">
+                <div className="flex items-center justify-between w-full">
+                  <span className="badge badge-primary font-bold px-3 py-1 text-xs">
+                    {prog.degree_level}
+                  </span>
+                  <span className="text-xs font-mono font-bold text-base-content/40">{prog.code}</span>
+                </div>
+                <h3 className="card-title text-2xl font-bold text-base-content leading-snug">{prog.name}</h3>
+                <p className="text-sm text-base-content/65 leading-relaxed font-semibold">{prog.description}</p>
+              </div>
             </div>
           ))}
         </div>
