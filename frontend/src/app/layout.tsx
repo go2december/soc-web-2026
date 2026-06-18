@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Prompt, Noto_Sans_Thai } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
 
 const promptFont = Prompt({
   subsets: ["latin", "thai"],
@@ -19,10 +20,10 @@ const notoFont = Noto_Sans_Thai({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | คณะสังคมศาสตร์ มรชร.",
-    default: "คลังข้อมูลและแพลตฟอร์มกลาง คณะสังคมศาสตร์ มรชร."
+    template: "%s | คณะสังคมศาสตร์ มหาวิทยาลัยราชภัฏเชียงราย",
+    default: "คณะสังคมศาสตร์ มหาวิทยาลัยราชภัฏเชียงราย"
   },
-  description: "ระบบคลังข้อมูล วิจัย และหลักสูตรวิชาการ คณะสังคมศาสตร์ มหาวิทยาลัยราชภัฏเชียงราย - แพลตฟอร์มกลางเพื่อบริการและเผยแพร่องค์ความรู้แก่สังคม",
+  description: "ระบบคลังข้อมูล วิจัย และหลักสูตรวิชาการ คณะสังคมศาสตร์ มหาวิทยาลัยราชภัฏเชียงราย - เพื่อบริการและเผยแพร่องค์ความรู้แก่สังคม",
   keywords: ["คณะสังคมศาสตร์", "มรชร", "มหาวิทยาลัยราชภัฏเชียงราย", "CRRU", "Social Sciences", "หลักสูตรพัฒนาสังคม", "จิตวิทยาสังคม", "คลังงานวิจัย"],
   authors: [{ name: "Faculty of Social Sciences, CRRU" }],
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://localhost"),
@@ -51,9 +52,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th" className={`${promptFont.variable} ${notoFont.variable}`}>
-      <body className="min-h-screen bg-background text-foreground antialiased">
+      <body className="min-h-screen bg-background text-foreground antialiased flex flex-col">
         <Navbar />
-        {children}
+        <div className="flex-grow">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   )

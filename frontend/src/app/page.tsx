@@ -272,18 +272,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="footer footer-center p-8 border-t border-base-200 bg-base-100 text-base-content/60 text-xs font-semibold mt-auto">
-        <aside>
-          <p>© {new Date().getFullYear()} Faculty of Social Sciences, Chiang Rai Rajabhat University. All rights reserved.</p>
-        </aside>
-      </footer>
     </main>
   )
 }
