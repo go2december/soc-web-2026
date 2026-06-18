@@ -29,6 +29,11 @@ export default function Footer() {
               มุ่งเน้นผลิตบัณฑิตนวัตกรสังคม พัฒนาองค์ความรู้วิจัยเชิงพื้นที่ และยกระดับการพัฒนาชุมชนท้องถิ่นสู่ระดับสากล 
               มหาวิทยาลัยราชภัฏเชียงราย
             </p>
+            {/* Address */}
+            <div className="flex gap-2.5 items-start text-xs font-semibold text-base-content/60 max-w-sm pt-1">
+              <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+              <span>เลขที่ 80 ม.9 ต.บ้านดู่ อ.เมือง จ.เชียงราย 57100</span>
+            </div>
             {/* Social Icons */}
             <div className="flex gap-3 pt-2">
               <a 
@@ -126,10 +131,6 @@ export default function Footer() {
           <div className="lg:col-span-2.5 space-y-4">
             <h3 className="font-bold text-xs uppercase tracking-wider text-base-content/40">ติดต่อคณะ</h3>
             <ul className="space-y-3 text-xs font-semibold text-base-content/70">
-              <li className="flex gap-2.5 items-start">
-                <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <span>เลขที่ 80 ม.9 ต.บ้านดู่ อ.เมือง จ.เชียงราย 57100</span>
-              </li>
               <li className="flex gap-2.5 items-center">
                 <Phone className="w-4 h-4 text-teal-600 shrink-0" />
                 <span>053-776-000 ต่อ 1234</span>
