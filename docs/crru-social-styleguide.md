@@ -13,7 +13,51 @@
 
 ---
 
-## 2. โค้ดการตั้งค่าธีมหลักสำหรับ daisyUI v5 และ shadcn/ui (`globals.css`)
+## 2. ระบบฟอนต์และตัวอักษร (Typography System - Modern & Energetic)
+
+เราใช้ระบบฟอนต์คู่แบบ **Modern & Energetic** เพื่อสร้างความรู้สึกสดใส ล้ำสมัย มีพลังของความเป็นนวัตกรรมและเทคโนโลยีใหม่ๆ:
+- **Heading (หัวข้อหลัก/รอง):** ใช้ฟอนต์ **Prompt** (ความกว้างโค้งล่ำ สดใสเมื่อทำหนา เหมาะเป็นสไตล์หัวข้อที่ดึงดูดสายตา)
+- **Body (เนื้อหาหลัก):** ใช้ฟอนต์ **Noto Sans Thai** (ฟอนต์แบบไร้หัวระดับสากลจาก Google อ่านง่าย สบายตา แม้แสดงบนอุปกรณ์พกพาขนาดเล็ก)
+
+### การติดตั้งและใช้งานผ่าน Next.js (layout.tsx & globals.css)
+1. นำเข้าแบบ Dynamic ผ่าน `next/font/google` ใน `layout.tsx`:
+   ```tsx
+   import { Prompt, Noto_Sans_Thai } from "next/font/google"
+   
+   const promptFont = Prompt({
+     subsets: ["latin", "thai"],
+     weight: ["300", "400", "500", "600", "700", "800", "900"],
+     variable: "--font-prompt",
+     display: "swap",
+   })
+   
+   const notoFont = Noto_Sans_Thai({
+     subsets: ["latin", "thai"],
+     weight: ["300", "400", "500", "600", "700"],
+     variable: "--font-noto-sans-thai",
+     display: "swap",
+   })
+   ```
+2. ประกาศตัวแปร CSS Variable และตั้งคลาสใน `@theme inline` ของ `globals.css`:
+   ```css
+   @theme inline {
+     --font-sans: var(--font-noto-sans-thai), ui-sans-serif, system-ui, sans-serif;
+     --font-heading: var(--font-prompt), var(--font-noto-sans-thai), ui-sans-serif, system-ui, sans-serif;
+   }
+   ```
+3. กำหนดความสอดคล้องของแท็กเบสผ่าน `@layer base` ใน `globals.css`:
+   ```css
+   html {
+     @apply font-sans; /* เนื้อหาทั้งหมดใช้ Noto Sans Thai */
+   }
+   h1, h2, h3, h4, h5, h6 {
+     @apply font-heading font-bold; /* หัวข้อทั้งหมดใช้ Prompt และตัวหนา */
+   }
+   ```
+
+---
+
+## 3. โค้ดการตั้งค่าธีมหลักสำหรับ daisyUI v5 และ shadcn/ui (`globals.css`)
 
 โครงสร้างการกำหนดค่าธีมแบบ CSS-first ใน Tailwind CSS v4 สำหรับ daisyUI 5 และการเชื่อมโยงระบบตัวแปรสีเข้ากับ shadcn/ui:
 
@@ -60,7 +104,7 @@
 
 ---
 
-## 3. คลาสและส่วนประกอบของ daisyUI 5 แนะนำสำหรับตกแต่ง
+## 4. คลาสและส่วนประกอบของ daisyUI 5 แนะนำสำหรับตกแต่ง
 
 การสร้างองค์ประกอบหน้าเว็บอย่างเป็นระบบและสากล โดยดึงคลาสสำเร็จรูปของ daisyUI มาจัดแต่ง:
 
@@ -74,7 +118,7 @@
 
 ---
 
-## 4. โครงสร้างตัวอย่าง: ส่วนหัวต้อนรับและปุ่มนำทาง (daisyUI Components)
+## 5. โครงสร้างตัวอย่าง: ส่วนหัวต้อนรับและปุ่มนำทาง (daisyUI Components)
 
 ### ตัวอย่าง: Navbar Component
 ```tsx
@@ -132,7 +176,7 @@ export default function HeroSection() {
 
 ---
 
-## 5. ผลลัพธ์เชิงเทคนิคด้านการจัดโครงสร้าง (Technical Advantages)
+## 6. ผลลัพธ์เชิงเทคนิคด้านการจัดโครงสร้าง (Technical Advantages)
 
 1. **การผ่านเกณฑ์การเข้าถึงสากล (Accessibility Compliance):** daisyUI 5 ออกแบบระบบสีและธีมให้สีปุ่มและตัวอักษรเป็นไปตามมาตรฐานอัตราส่วนความต่างสี **WCAG 2.1 Level AA** ทำให้ผ่านการตรวจสอบ Google Lighthouse ได้ง่าย
 2. **ประสิทธิภาพและความเร็ว (Performance Optimization):** การใช้ปลั๊กอินและส่วนประกอบสำเร็จรูปของ daisyUI แทนการจัดแต่ง CSS ดิบจำนวนมาก ช่วยลดปริมาณคลาส Tailwind ทำให้ CSS ที่ถูกประมวลผลออกมารีโหลดได้ไวขึ้น

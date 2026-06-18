@@ -1,6 +1,21 @@
 import type { Metadata } from "next"
+import { Prompt, Noto_Sans_Thai } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/Navbar"
+
+const promptFont = Prompt({
+  subsets: ["latin", "thai"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-prompt",
+  display: "swap",
+})
+
+const notoFont = Noto_Sans_Thai({
+  subsets: ["latin", "thai"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-noto-sans-thai",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: {
@@ -35,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="th">
+    <html lang="th" className={`${promptFont.variable} ${notoFont.variable}`}>
       <body className="min-h-screen bg-background text-foreground antialiased">
         <Navbar />
         {children}
